@@ -1,0 +1,27 @@
+<div class="search">
+  <input #term  (keyup)="search(term.value)" type="text" name="" id="" />
+</div >
+<div class="table" >
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Artist</th>
+        <td mat-cell *matCellDef="let element">
+          <img src="{{ element.image }}" alt="{{ element.name }}" /> {{ element.name }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+

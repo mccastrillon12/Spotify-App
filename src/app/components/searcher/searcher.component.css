@@ -1,0 +1,21 @@
+img{
+  width: 50px;
+}
+
+input{
+  width: 50%;
+  height: 30px;
+  border: solid 1px #c5c5c5;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+.mat-elevation-z8{
+  width: 50%;
+
+}
+
+.table, .search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
