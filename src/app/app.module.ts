@@ -7,7 +7,8 @@ import { SearcherComponent } from './components/searcher/searcher.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatIconModule} from '@angular/material/icon'
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,9 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
