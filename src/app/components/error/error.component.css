@@ -1,0 +1,23 @@
+
+.container{
+  background-color: #242424;
+  width: 100%;
+  height: 88.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container-error{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+img{
+  width: 200px;
+  margin-bottom: 10px;
+}

@@ -12,11 +12,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NewReleasesComponent } from './components/new-releases/new-releases.component';
+import { ErrorComponent } from './components/error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
     SearcherComponent,
-    NewReleasesComponent
+    NewReleasesComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

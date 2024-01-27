@@ -77,7 +77,8 @@
   <div *ngIf="searchTracking === '' && dataSource.data.length === 0">
     <app-new-releases></app-new-releases>
   </div>
-  <div *ngIf="searchTracking !== '' && dataSource.data.length === 0">
-    <h1>ERRRRRROOOOOOOOOORRRRRR</h1>
+
+  <div  *ngIf="searchTracking !== '' && dataSource.data.length === 0">
+   <app-error></app-error>
   </div>
 </div>
