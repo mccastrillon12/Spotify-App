@@ -9,6 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon'
 import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import {MatInputModule} from '@angular/material/input';
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

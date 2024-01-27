@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ArtistInformation, ArtistResponse } from 'src/app/models/artist-information';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -9,11 +10,10 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./searcher.component.css'],
 })
 export class SearcherComponent implements AfterViewInit {
-  artistNames: any = [];
-  displayedColumns: string[] = ['name','followers','popularity'];
-  dataSource = new MatTableDataSource<PeriodicElement>();
-  artist: any = [];
-
+  artistList: ArtistInformation[];
+  displayedColumns: string[] = ['name', 'followers', 'popularity'];
+  dataSource = new MatTableDataSource<ArtistInformation>();
+  searchTracking: string = '';
 
   constructor(private spotify: ApiService) {}
 
@@ -22,21 +22,27 @@ export class SearcherComponent implements AfterViewInit {
       this.dataSource.data = [];
       return;
     }
-    this.spotify.getArtist(term).subscribe((res) => {
-      this.artist = res;
-      this.artistNames = this.artist.artists.items.map((item: any) => ({
-        followers:item.followers.total,
-        genero:item.genres,
-        name: item.name,
-        popularity: item.popularity,
-        image:
-          item.images.length > 0
-            ? item.images[2].url
-            : 'https://static.vecteezy.com/system/resources/thumbnails/015/082/032/small/vinyl-disc-with-blank-cover-template-mockup-png.png',
-      }));
-      this.dataSource.data = this.artistNames;
-      console.log( res)
+    this.spotify.getArtist(term).subscribe((res:ArtistResponse ) => {
+      this.artistList = res.artists.items.map((artist) => {
+        const artistInformation: ArtistInformation = {
+          id: artist.id,
+          followers: {...artist.followers},
+          genres: artist.genres,
+          name: artist.name,
+          popularity: artist.popularity,
+          images:
+            artist.images.length > 0
+              ? artist.images
+              : [{url:'https://static.vecteezy.com/system/resources/thumbnails/015/082/032/small/vinyl-disc-with-blank-cover-template-mockup-png.png'}],
+        };
+        return artistInformation;
+      });
+      this.dataSource.data = this.artistList;
     });
+  }
+
+  private mapArtistInformation(artist: ArtistInformation){
+
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,11 +50,4 @@ export class SearcherComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-}
-
-export interface PeriodicElement {
-  name: string;
-  followers:number
-  popularity: number;
-
 }

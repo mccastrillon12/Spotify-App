@@ -2,6 +2,7 @@
   <div class="search__container">
     <div class="search__input__container">
       <input
+        [(ngModel)]="searchTracking"
         class="search__input"
         #term
         (keyup)="search(term.value)"
@@ -11,7 +12,7 @@
         placeholder="Buscar tu artista favorito"
       />
     </div>
-    <div  class="search__table">
+    <div *ngIf="dataSource.data.length > 0"  class="search__table">
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="name">
@@ -21,7 +22,7 @@
               mat-cell
               *matCellDef="let element"
             >
-              <img src="{{ element.image }}" alt="{{ element.name }}" />
+              <img src="{{ element.images.length === 1 ? element.images[0].url: element.images[2].url }}" alt="{{ element.name }}" />
               {{ element.name }}<br />
               {{ element.genero }}
             </td>
@@ -39,7 +40,7 @@
               mat-cell
               *matCellDef="let element"
             >
-              {{ element.followers|number }}
+              {{ element.followers.total|number }}
             </td>
           </ng-container>
           <ng-container matColumnDef="popularity">
@@ -72,4 +73,15 @@
       </div>
     </div>
   </div>
+  <div *ngIf="dataSource.data.length === 0" >
+    <h1>INICIO</h1>
+  </div>
+  <div *ngIf="searchTracking !== '' && dataSource.data.length === 0">
+    <h1>
+      ERRRRRROOOOOOOOOORRRRRR
+    </h1>
+  </div>
 </div>
+
+
+
