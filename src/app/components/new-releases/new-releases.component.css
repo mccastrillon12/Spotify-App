@@ -2,16 +2,16 @@
   justify-content: center;
   align-items: center;
   color: white;
+  padding: 10px
+
 }
 
 .release__content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 15px;
-  padding: 30px;
-  width: 95vw;
   color: white;
-  background-color: #242424;
+
 }
 
 .release__information {
@@ -34,7 +34,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(22, 21, 21, 0.829);
   opacity: 0;
   transition: 0.5s;
   color: white;
@@ -45,6 +44,7 @@
   bottom: 0;
   text-align: center;
   padding: 10px;
+  background-color: #242424c2;
 }
 
 .release__information:hover .release__text {
@@ -55,8 +55,7 @@
   font-family: "Concert One", sans-serif;
   padding: 15px 30px;
   margin: 0;
-  background-color: #242424;
   font-size: 2.5em;
-  width: 95vw;
+
 }
 

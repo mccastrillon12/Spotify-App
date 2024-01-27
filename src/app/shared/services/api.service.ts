@@ -12,7 +12,7 @@ export class ApiService {
   getQuery(query: string) {
     const headers = new HttpHeaders({
       Authorization:
-        'Bearer BQB2Xe24f1J1ewA4f3jdh8uR7v7eQQiaV_93Ec0RO5IN348i3uV3mfsHy9tOU3IFu-fZmGu25nLBCCT-Mn8iMqMWjk1Vq33N-04NsZ_SCK1OCxLaG18',
+        'Bearer BQAJmqzQxcfrE7pxeYywLCIYV-9DmwLTAPKFC3-l0vN7apkCBukf--eQI0o95RjMkYp_bRY3ja8NPZCG_Do9KPCcqj2X0XQ4YDLdBgS2RqYxnzpg6JQ',
     });
     return this.http.get(`${URL}/${query}`, { headers });
   }
