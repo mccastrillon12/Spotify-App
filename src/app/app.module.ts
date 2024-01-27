@@ -9,11 +9,14 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon'
 import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { NewReleasesComponent } from './components/new-releases/new-releases.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SearcherComponent
+    SearcherComponent,
+    NewReleasesComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatInputModule,
     FormsModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

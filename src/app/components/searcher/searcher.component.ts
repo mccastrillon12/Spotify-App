@@ -27,7 +27,6 @@ export class SearcherComponent implements AfterViewInit {
     }
     this.spotify.getArtist(term).subscribe((res: ArtistResponse) => {
       this.artistList = res.artists.items.map(this.mapArtistInformation);
-      console.log(this.artistList);
       this.dataSource.data = this.artistList;
     });
   }

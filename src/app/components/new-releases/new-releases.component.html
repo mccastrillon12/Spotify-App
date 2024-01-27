@@ -1,0 +1,13 @@
+<div class="release__container">
+  <h1 class="release__container__title">New Releases</h1>
+  <div class="release__content">
+
+    <div *ngFor="let newRelease of newReleases" class="release__information">
+      <img src="{{ newRelease.images[0].url }}" alt="" />
+      <div class="release__text">
+        <h2>{{ newRelease.name }}</h2>
+        <span>{{ newRelease.artists[0].name }}</span>
+      </div>
+    </div>
+  </div>
+</div>
