@@ -1,0 +1,24 @@
+<div *ngIf="dataModelAlbum" class="model">
+  <div class="model__image">
+    <img src="{{dataModelAlbum.images[0].url}}" alt="">
+  </div>
+
+  <h1>{{ dataModelAlbum.name }}</h1>
+  <h3>songs from the album
+    {{    dataModelAlbum.total_tracks }}</h3>
+  <div>
+    release date {{ dataModelAlbum.release_date }}</div>
+  <div mat-dialog-actions>
+    <button  mat-dialog-close>Close</button>
+  </div>
+</div>
+
+<div *ngIf="dataModelTrack" class="model">
+  <h1>{{ dataModelTrack.name }}</h1>
+  <h1>{{ dataModelTrack.album.name }}</h1>
+  <h1>{{ dataModelTrack.track_number }}</h1>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="warn" mat-dialog-close>Close</button>
+  </div>
+</div>
+

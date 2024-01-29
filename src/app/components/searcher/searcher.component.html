@@ -20,6 +20,7 @@
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>Artist</th>
               <td
+                (click)="sendId(element)"
                 class="search__table__information"
                 mat-cell
                 *matCellDef="let element"

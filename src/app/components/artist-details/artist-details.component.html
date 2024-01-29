@@ -1,0 +1,37 @@
+<div class="artist">
+  <div class="artis__container">
+    <div class="artist__banner">
+      <div>
+        <img src="{{ artistDetails.images[0].url }}" alt="" />
+
+      </div>
+
+      <div class="text">
+        <h1>{{ artistDetails.name }}</h1>
+        <!-- <span>{{artistDetails.genres}}</span> -->
+      </div>
+    </div>
+  </div>
+  <div class="albums">
+    <mat-card (click)="openDialog(album)" class="albums__information" *ngFor="let album of albums">
+      <mat-card-header>
+        <div>
+          <mat-card-title>{{ album.name }}</mat-card-title>
+        </div>
+      </mat-card-header>
+      <div class="albums-image">
+        <img mat-card-image src="{{ album.images[0].url }}" />
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="artis__container">
+    <div class="topTracks">
+      <mat-list role="list">
+        <h3 (click)="openDialog(track)" *ngFor="let track of tracks" role="listitem">{{
+          track.name
+        }}</h3>
+      </mat-list>
+    </div>
+  </div>
+</div>

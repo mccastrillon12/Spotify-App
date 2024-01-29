@@ -13,12 +13,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NewReleasesComponent } from './components/new-releases/new-releases.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ArtistDetailsComponent } from './components/artist-details/artist-details.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModelArtistDetailsComponent } from './components/model-artist-details/model-artist-details.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     SearcherComponent,
     NewReleasesComponent,
-    ErrorComponent
+    ErrorComponent,
+    ArtistDetailsComponent,
+    ModelArtistDetailsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +41,12 @@ import { ErrorComponent } from './components/error/error.component';
     MatIconModule,
     MatInputModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    MatDialogModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

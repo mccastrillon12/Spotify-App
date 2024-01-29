@@ -8,6 +8,9 @@ export interface ReleaseAlbumInformation{
 }
 export interface ReleasesInformation {
   id:string;
+  total_tracks?:number;
+  release_date?:number;
+  type?:string
   name: string;
   artists:ReleaseArtistInformation[]
   images:ReleasesImages[]

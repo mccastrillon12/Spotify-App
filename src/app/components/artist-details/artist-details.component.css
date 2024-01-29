@@ -1,0 +1,83 @@
+
+
+.artist{
+  padding: 16px;
+}
+
+.artis__container {
+  background-color: #242424;
+  width: 98vw;
+}
+
+.artist__banner{
+  height: 378px;
+  overflow: hidden;
+  display: grid;
+  color: white;
+  grid-template-columns: 1fr 3fr;
+  grid-auto-rows: 100%;
+
+}
+img{
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2%;
+}
+
+.text{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+
+.albums{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+
+}
+
+.albums__information{
+  display: grid;
+
+}
+
+.albums__information img{
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+mat-card{
+  background-color: #242424;
+  color: white;
+  width: 151px;
+  height: 208px;
+}
+
+mat-card-header.mat-mdc-card-header {
+  height: 70px;
+  padding: 8px 16px 0;
+  justify-content: center;
+}
+
+mat-card-title {
+ font-size: 12px;
+ line-height:1;
+
+
+}
+
+.topTracks{
+  margin-left: 15px;
+
+}
+
+h3{
+  color: white;
+}
+

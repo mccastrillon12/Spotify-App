@@ -1,11 +1,17 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+
 import {
   ArtistInformation,
   ArtistResponse,
 } from 'src/app/models/artist-information';
+
 import { ApiService } from 'src/app/shared/services/api.service';
+import { SharedArtistService } from 'src/app/shared/services/shared-artist.service';
+
+
 
 @Component({
   selector: 'app-searcher',
@@ -18,7 +24,7 @@ export class SearcherComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<ArtistInformation>();
   searchTracking: string = '';
 
-  constructor(private spotify: ApiService) {}
+  constructor(private spotify: ApiService, private router: Router, private sharedArtistService:SharedArtistService, ) {}
 
   search(term: string) {
     if (term === '') {
@@ -55,4 +61,15 @@ export class SearcherComponent implements AfterViewInit {
     };
     return artistInformation;
   }
+
+  sendId(artistInformation:ArtistInformation) {
+
+    this.sharedArtistService.sendArtistInformation(artistInformation);
+    this.router.navigate(['artist'],{queryParams:{id : artistInformation.id}})
+
+  }
+
+
+
+
 }

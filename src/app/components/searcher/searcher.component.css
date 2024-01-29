@@ -9,6 +9,7 @@
 .search__fullcontainer {
   background-color: #242424;
   width: 98vw;
+
 }
 .search__input {
   height: 24px;
@@ -73,4 +74,8 @@ mat-icon {
 
 .search__input:focus {
   border: solid 2px white;
+}
+
+td{
+  cursor: pointer;
 }

@@ -12,7 +12,7 @@ export class ApiService {
   getQuery(query: string) {
     const headers = new HttpHeaders({
       Authorization:
-        'Bearer BQAJmqzQxcfrE7pxeYywLCIYV-9DmwLTAPKFC3-l0vN7apkCBukf--eQI0o95RjMkYp_bRY3ja8NPZCG_Do9KPCcqj2X0XQ4YDLdBgS2RqYxnzpg6JQ',
+        'Bearer BQB_r4Km2MbMZD02I_dp9gOTp16L-Ib1Xre33_cqE30b3Uf8GmVTOkJogh9_aEUkjN63i8qhjNtkDfoDS6I-hJE_KmZcmUFCRfikJENYHvrm5V2_y_o',
     });
     return this.http.get(`${URL}/${query}`, { headers });
   }
@@ -29,5 +29,17 @@ export class ApiService {
     )
   }
 
+  getArtistDetails(id:string){
+    return this.getQuery(
+      `artists/${id}/albums?limit=10`
+    )
+  }
+
+  getArtistTracks(id:string){
+    return this.getQuery(
+      `artists/${id}/top-tracks?market=es`
+    )
+  }
 
 }
+
