@@ -1,58 +1,85 @@
-
-
-.artist{
+.artist {
   padding: 16px;
 }
 
 .artis__container {
-  background-color: #242424;
   width: 98vw;
-}
-
-.artist__banner{
   height: 378px;
   overflow: hidden;
-  display: grid;
-  color: white;
-  grid-template-columns: 1fr 3fr;
-  grid-auto-rows: 100%;
-
-}
-img{
-  height: 100%;
-  object-fit: cover;
-  border-radius: 2%;
+  position: relative;
+  background: #0000009c;
 }
 
-.text{
+.img-background {
+  width: 99vw;
+  height: 378px;
+  filter: blur(4px);
+  display: block;
+  position: absolute;
+  z-index: -1;
+}
+.text {
+  position: relative;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: flex;
-
+  height: 100%;
 }
 
-.albums{
+h1 {
+  color: #ffffffe0;
+  font-size: 100px;
+  text-shadow: 1px 1px 5px black;
+  font-family: "Concert One", sans-serif;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+h3 {
+  color: white;
+  font-size: 13px;
+  font-style: italic;
+  margin: 0;
+}
+
+.information {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.albums {
   margin-top: 20px;
   margin-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
-
 }
 
-.albums__information{
+.albums-image {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.albums__information {
   display: grid;
-
 }
 
-.albums__information img{
-  max-width: 100%;
+.albums__information img {
+  max-width: 91%;
   max-height: 100%;
   display: block;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
-mat-card{
+mat-card {
   background-color: #242424;
   color: white;
   width: 151px;
@@ -63,21 +90,51 @@ mat-card-header.mat-mdc-card-header {
   height: 70px;
   padding: 8px 16px 0;
   justify-content: center;
+  text-align: center;
 }
 
 mat-card-title {
- font-size: 12px;
- line-height:1;
-
-
+  font-size: 12px;
+  line-height: 1;
 }
 
-.topTracks{
-  margin-left: 15px;
-
+.title {
+  font-family: "Concert One", sans-serif;
+  padding: 19px 0px 0px 17px;
+  margin: 0;
+  font-size: 35px;
 }
 
-h3{
+.topTracks {
+  background-color: #242424;
+  padding: 10px;
+  width: 98%;
+}
+
+mat-card-header.mat-mdc-card-header mat-ico {
+  text-align: end;
+}
+
+.add-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
   color: white;
+  background: green;
+  border-radius: 100%;
+  cursor: pointer;
 }
+
+.form{
+  display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+p{
+  margin-bottom: 0px;
+  height: auto;
+}
+
 

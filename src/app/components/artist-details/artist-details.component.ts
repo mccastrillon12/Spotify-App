@@ -13,10 +13,17 @@ import {
 } from 'src/app/models/releases-information';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { SharedArtistService } from 'src/app/shared/services/shared-artist.service';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ModelArtistDetailsComponent } from '../model-artist-details/model-artist-details.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
 
 
 
@@ -24,13 +31,21 @@ import { ModelArtistDetailsComponent } from '../model-artist-details/model-artis
   selector: 'app-artist-details',
   templateUrl: './artist-details.component.html',
   styleUrls: ['./artist-details.component.css'],
-
 })
 export class ArtistDetailsComponent {
   id: string;
   artistDetails: ArtistInformation;
   albums: ReleasesInformation[];
   tracks: TrackInformation[];
+
+  displayedColumns: string[] = ['name'];
+  formAlbum = new FormGroup({
+    name: new FormControl(''),
+    year: new FormControl(''),
+    url: new FormControl(''),
+  });
+  dataSource = new MatTableDataSource<ReleasesInformation>();
+
 
   constructor(
     private aRoute: ActivatedRoute,
@@ -51,6 +66,7 @@ export class ArtistDetailsComponent {
     this.artistDetails = this.sharedArtistService.artistInformation;
 
     this.getTracksDetails();
+    console.log( this.dataSource.data)
   }
 
   getAlbumstDetails() {
@@ -58,7 +74,6 @@ export class ArtistDetailsComponent {
       .getArtistDetails(this.id)
       .subscribe((res: ReleaseAlbumInformation) => {
         this.albums = res.items.map(this.mapAlbumInformation);
-
       });
   }
 
@@ -69,8 +84,8 @@ export class ArtistDetailsComponent {
       artists: album.artists,
       images: album.images,
       type: album.type,
-      total_tracks:album.total_tracks,
-      release_date:album.release_date
+      total_tracks: album.total_tracks,
+      release_date: album.release_date,
     };
     return albumInformation;
   }
@@ -81,23 +96,31 @@ export class ArtistDetailsComponent {
     });
   }
 
-  private mapTrackInformation(track:TrackInformation):TrackInformation{
-    const trackInformation :TrackInformation={
+  private mapTrackInformation(track: TrackInformation): TrackInformation {
+    const trackInformation: TrackInformation = {
       name: track.name,
       type: track.type,
       track_number: track.track_number,
-      album: track.album
-    }
-return trackInformation
+      album: track.album,
+    };
+    return trackInformation;
   }
 
   openDialog(dataModel: ReleasesInformation | TrackInformation) {
     this.dialog.open(ModelArtistDetailsComponent, {
       data: dataModel,
-
     });
   }
+
+  send() {
+    const addAlbum: ReleasesInformation = {
+      name: this.formAlbum.value.name
+    };
+    this.dataSource.data = [...this.dataSource.data, {...addAlbum}];
+    console.log(this.dataSource.data)
+  }
+
+
+
 }
-
-
 

@@ -19,6 +19,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModelArtistDetailsComponent } from './components/model-artist-details/model-artist-details.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -29,6 +33,7 @@ import { ModelArtistDetailsComponent } from './components/model-artist-details/m
     ErrorComponent,
     ArtistDetailsComponent,
     ModelArtistDetailsComponent,
+    StarRatingComponent,
 
   ],
   imports: [
@@ -45,7 +50,9 @@ import { ModelArtistDetailsComponent } from './components/model-artist-details/m
     MatButtonModule,
     MatCardModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

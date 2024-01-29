@@ -62,7 +62,10 @@
                 mat-cell
                 *matCellDef="let element"
               >
-                {{ element.popularity }}
+              <app-star-rating
+              [value]="element.popularity"
+              style="margin-right: 20px"
+            ></app-star-rating>
               </td>
             </ng-container>
 
