@@ -38,13 +38,15 @@ export class ArtistDetailsComponent {
   albums: ReleasesInformation[];
   tracks: TrackInformation[];
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name','year'];
+  displayedColumnsTracks: string[] = ['name','album', 'trackInAlbum'];
   formAlbum = new FormGroup({
     name: new FormControl(''),
     year: new FormControl(''),
     url: new FormControl(''),
   });
   dataSource = new MatTableDataSource<ReleasesInformation>();
+  dataSourceTracks = new MatTableDataSource<ReleasesInformation>();
 
 
   constructor(
@@ -93,6 +95,8 @@ export class ArtistDetailsComponent {
   getTracksDetails() {
     this.spotify.getArtistTracks(this.id).subscribe((res: ArtistTracks) => {
       this.tracks = res.tracks.map(this.mapTrackInformation);
+      this.dataSourceTracks.data = this.tracks;
+      console.log(this.dataSourceTracks.data)
     });
   }
 
@@ -102,6 +106,8 @@ export class ArtistDetailsComponent {
       type: track.type,
       track_number: track.track_number,
       album: track.album,
+      artists: track.album.artists
+
     };
     return trackInformation;
   }
@@ -114,10 +120,18 @@ export class ArtistDetailsComponent {
 
   send() {
     const addAlbum: ReleasesInformation = {
-      name: this.formAlbum.value.name
+      name: this.formAlbum.value.name,
+      release_date:parseInt(this.formAlbum.value.year),
+      images: [{url:this.formAlbum.value.url}]
     };
     this.dataSource.data = [...this.dataSource.data, {...addAlbum}];
-    console.log(this.dataSource.data)
+
+
+  }
+  sendAlbum(album: ReleasesInformation){
+
+    this.dataSource.data = [...this.dataSource.data, {...album}];
+    console.log(album)
   }
 
 

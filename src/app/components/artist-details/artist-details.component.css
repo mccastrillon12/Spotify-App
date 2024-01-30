@@ -138,3 +138,54 @@ p{
 }
 
 
+table img{
+  width: 35px;
+
+}
+
+table{
+  background-color: #242424;
+
+}
+
+td,th,tr{
+  color: white;
+}
+
+.td{
+  display: flex;
+  align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.tack__table__information{
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.mat-mdc-cell{
+  border-bottom-style:none
+}
+.element-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-names {
+  font-size: 11px;
+  display: flex;
+
+}
+
+input#mat-input-3 {
+  color: white
+}
+.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-5.mdc-text-field--filled.mdc-text-field--no-label{
+  background-color: #242424 !important;
+}
+
+.mat-mdc-raised-button.mat-primary{
+  --mdc-protected-button-container-color: #70b53f;
+}

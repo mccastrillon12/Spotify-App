@@ -1,4 +1,4 @@
-import { ReleasesInformation } from "./releases-information"
+import { ReleaseArtistInformation, ReleasesInformation } from "./releases-information"
 
 export interface ArtistTracks{
 tracks:TrackInformation[]
@@ -7,6 +7,8 @@ tracks:TrackInformation[]
 export interface TrackInformation{
   name:string,
   track_number:number,
-  type:string
-  album:ReleasesInformation
+  type:string,
+  album:ReleasesInformation,
+  artists:ReleaseArtistInformation[]
+
 }
