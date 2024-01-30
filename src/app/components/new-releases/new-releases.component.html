@@ -1,12 +1,12 @@
 <div class="release__container">
-  <h1 class="release__container__title">New Releases</h1>
+  <h1 class="release__title">New Releases</h1>
   <div class="release__content">
 
-    <div *ngFor="let newRelease of newReleases" class="release__information">
-      <img src="{{ newRelease.images[0].url }}" alt="" />
+    <div *ngFor="let newRelease of newReleases" class="release__item">
+      <img src="{{ newRelease.images[0].url }}" alt="" class="release__image" />
       <div class="release__text">
-        <h2>{{ newRelease.name }}</h2>
-        <span>{{ newRelease.artists[0].name }}</span>
+        <h2 class="release__name" >{{ newRelease.name }}</h2>
+        <span class="release__artist">{{ newRelease.artists[0].name }}</span>
       </div>
     </div>
   </div>

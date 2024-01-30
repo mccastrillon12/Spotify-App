@@ -1,67 +1,77 @@
 <div class="artist">
   <div class="artis__container">
     <img
-      class="img-background"
+      class="artist__background"
       src="{{ artistDetails.images[0].url }}"
       alt=""
     />
 
-    <div class="text">
-      <h1>{{ artistDetails.name }}</h1>
+    <div class="artist__text">
+      <h1 class="artist__title-principal">{{ artistDetails.name }}</h1>
 
-      <div class="information">
-        <h3>popularity:</h3>
+      <div class="artist__information">
+        <h3 class="artist__subtitle-principal">popularity:</h3>
         <app-star-rating
           [value]="artistDetails.popularity"
           style="margin-right: 20px"
         ></app-star-rating>
 
-        <h3>followers:</h3>
-        <h3>{{ artistDetails.followers.total | number }}</h3>
+        <h3 class="artist__subtitle-principal">followers:</h3>
+        <h3 class="artist__subtitle-principal">
+          {{ artistDetails.followers.total | number }}
+        </h3>
       </div>
     </div>
   </div>
 
-  <h1 class="title">Albums</h1>
-  <div class="albums">
-    <mat-card class="albums__information" *ngFor="let album of albums">
-      <div class="albums-image">
+  <h1 class="artist__title">Albums</h1>
+  <div class="artist__albums">
+    <mat-card class="artist__album" *ngFor="let album of albums">
+      <div class="artist__album-image">
         <img
           (click)="openDialog(album)"
           mat-card-image
           src="{{ album.images[0].url }}"
         />
         <mat-icon
-          class="add-icon"
+          class="artist__add-icon"
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="add"
           (click)="sendAlbum(album)"
         ></mat-icon>
       </div>
-      <mat-card-header (click)="openDialog(album)">
+      <mat-card-header class="artist__card-header" (click)="openDialog(album)">
         <div>
-          <mat-card-title>{{ album.name }}</mat-card-title>
+          <mat-card-title class="artist__card-title">{{
+            album.name
+          }}</mat-card-title>
         </div>
       </mat-card-header>
     </mat-card>
   </div>
 
-  <h1 class="title">Top Tracks</h1>
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSourceTracks">
+  <h1 class="artist__title">Top Tracks</h1>
+  <div class="artist__tracks-container mat-elevation-z8">
+    <table class="artist__table" mat-table [dataSource]="dataSourceTracks">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Tracks</th>
+        <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
+          Tracks
+        </th>
         <td
           (click)="openDialog(element)"
-          class="tack__table__information"
+          class="artist__track-information"
           mat-cell
           *matCellDef="let element"
         >
-          <img src="{{ element.album.images[0].url }}" alt="" />
-          <div class="element-details">
+          <img
+            class="artist__table-image"
+            src="{{ element.album.images[0].url }}"
+            alt=""
+          />
+          <div class="artist_table-details">
             <div>{{ element.name }}</div>
-            <div class="artist-names">
+            <div class="artist__artist-names">
               <span
                 *ngFor="let artist of element.album.artists; let last = last"
               >
@@ -73,15 +83,29 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="album">
-        <th mat-header-cell *matHeaderCellDef>Album</th>
-        <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+        <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
+          Album
+        </th>
+        <td
+          class="artist__table-subtitle"
+          (click)="openDialog(element)"
+          mat-cell
+          *matCellDef="let element"
+        >
           {{ element.album.name }}
         </td>
       </ng-container>
       <ng-container matColumnDef="trackInAlbum">
-        <th mat-header-cell *matHeaderCellDef># Tracks in Album</th>
+        <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
+          # Tracks in Album
+        </th>
 
-        <td (click)="openDialog(element)" mat-cell *matCellDef="let element">
+        <td
+          class="artist__table-subtitle"
+          (click)="openDialog(element)"
+          mat-cell
+          *matCellDef="let element"
+        >
           {{ element.track_number }}
         </td>
       </ng-container>
@@ -90,45 +114,43 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumnsTracks"></tr>
     </table>
   </div>
-  <h1 class="title">Added</h1>
+  <h1 class="artist__title">Added</h1>
 
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table class="artist__table" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>albums</th>
-        <td
-          class="add"
-          mat-cell
-          *matCellDef="let element"
-        >
-        <img src="{{element.images[0].url}}" alt="">
+        <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
+          albums
+        </th>
+        <td class="artist__added-album" mat-cell *matCellDef="let element">
+          <div class="artist__added-information">
+            <img class="artist__added-image" src="{{ element.images[0].url }}" alt="" />
 
-          {{ element.name }}
+            {{ element.name }}
+          </div>
+
         </td>
       </ng-container>
       <ng-container matColumnDef="year">
-        <th mat-header-cell *matHeaderCellDef>Year</th>
-        <td
-          class="search__table__information"
-          mat-cell
-          *matCellDef="let element"
-        >
+        <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
+          Year
+        </th>
+        <td class="artist__added-album" mat-cell *matCellDef="let element">
           {{ element.release_date }}
         </td>
       </ng-container>
-
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>
   <br />
-  <h1 class="title">New Album</h1>
+  <h1 class="artist__title">New Album</h1>
   <form [formGroup]="formAlbum" (ngSubmit)="send()">
-    <div class="form">
+    <div class="artist__form">
       <p>
         <mat-form-field appearance="fill">
-          <input formControlName="name" matInput placeholder="Album Name" />
+          <input formControlName="name" matInput placeholder="Album Name" required/>
         </mat-form-field>
       </p>
       <p>
@@ -138,15 +160,19 @@
             formControlName="year"
             type="number"
             placeholder="Album Year"
+            required
           />
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input matInput formControlName="url" placeholder="Url Image" />
+          <input matInput formControlName="url" placeholder="Url Image" required/>
+
         </mat-form-field>
       </p>
-      <button mat-raised-button onclick=" " color="primary">Primary</button>
+      <button mat-raised-button class="artist__button" color="primary" [disabled]="!formAlbum.valid">
+        Primary
+      </button>
     </div>
   </form>
 </div>

@@ -12,7 +12,7 @@
 
 }
 
-h1{
+.model__title, .model__subtitle, .model__info{
   text-align: center;
 }
 

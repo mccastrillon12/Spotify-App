@@ -1,0 +1,6 @@
+:root{
+  --release-grid-display:grid;
+  --release-grid-justify:center;
+  --release-grid-aling:center;
+  --release-overflow:hidden
+}

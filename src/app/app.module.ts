@@ -22,6 +22,8 @@ import { ModelArtistDetailsComponent } from './components/model-artist-details/m
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './shared/components/loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -34,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ArtistDetailsComponent,
     ModelArtistDetailsComponent,
     StarRatingComponent,
+    LoadingComponent,
 
   ],
   imports: [
@@ -52,7 +55,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatDialogModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

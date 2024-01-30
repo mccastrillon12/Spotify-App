@@ -10,7 +10,7 @@
   background: #0000009c;
 }
 
-.img-background {
+.artist__background {
   width: 99vw;
   height: 378px;
   filter: blur(4px);
@@ -18,7 +18,7 @@
   position: absolute;
   z-index: -1;
 }
-.text {
+.artist__text {
   position: relative;
   text-align: center;
   display: flex;
@@ -28,7 +28,7 @@
   height: 100%;
 }
 
-h1 {
+.artist__title-principal {
   color: #ffffffe0;
   font-size: 100px;
   text-shadow: 1px 1px 5px black;
@@ -39,39 +39,52 @@ h1 {
   margin-bottom: 30px;
 }
 
-h3 {
+.artist__subtitle-principal {
   color: white;
   font-size: 13px;
   font-style: italic;
   margin: 0;
 }
 
-.information {
+.artist__title {
+  font-family: "Concert One", sans-serif;
+  padding: 19px 0px 0px 17px;
+  margin: 0;
+  font-size: 35px;
+  color: #ffffffe0;
+  margin-bottom: 30px;
+}
+
+.artist__albums {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 20px;
+}
+
+.artist__information {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 10px;
 }
 
-.albums {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-.albums-image {
+.artist__album-image {
   justify-content: center;
   display: flex;
   align-items: center;
   position: relative;
 }
-.albums__information {
+.artist__album {
   display: grid;
+  background-color: #242424;
+  color: white;
+  width: 151px;
+  height: 208px;
 }
 
-.albums__information img {
+.artist__album img {
   max-width: 91%;
   max-height: 100%;
   display: block;
@@ -79,43 +92,43 @@ h3 {
   margin-top: 5px;
 }
 
-mat-card {
-  background-color: #242424;
-  color: white;
-  width: 151px;
-  height: 208px;
-}
-
-mat-card-header.mat-mdc-card-header {
+.artist__card-header {
   height: 70px;
   padding: 8px 16px 0;
   justify-content: center;
   text-align: center;
 }
 
-mat-card-title {
+.artist__card-title {
   font-size: 12px;
   line-height: 1;
 }
 
-.title {
-  font-family: "Concert One", sans-serif;
-  padding: 19px 0px 0px 17px;
-  margin: 0;
-  font-size: 35px;
-}
-
-.topTracks {
+.artist__table {
   background-color: #242424;
-  padding: 10px;
-  width: 98%;
 }
 
-mat-card-header.mat-mdc-card-header mat-ico {
-  text-align: end;
+.artist__track-information {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
 }
 
-.add-icon {
+.artist__table-image {
+  width: 35px;
+}
+.artist__added-image {
+  width: 35px;
+  margin-right: 5px;
+}
+
+.artist__added-information {
+  display: flex;
+  align-items: center;
+}
+
+.artist__add-icon {
   position: absolute;
   bottom: 8px;
   right: 10px;
@@ -125,67 +138,77 @@ mat-card-header.mat-mdc-card-header mat-ico {
   cursor: pointer;
 }
 
-.form{
+.artist__form {
   display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    align-items: center;
-}
-
-p{
-  margin-bottom: 0px;
-  height: auto;
-}
-
-
-table img{
-  width: 35px;
-
-}
-
-table{
-  background-color: #242424;
-
-}
-
-td,th,tr{
-  color: white;
-}
-
-.td{
-  display: flex;
-  align-items: center;
-  display: flex;
+  gap: 15px;
+  margin-top: 15px;
   align-items: center;
 }
 
-.tack__table__information{
-  display: flex;
-  align-items: center;
-  gap: 10px
-}
-
-.mat-mdc-cell{
-  border-bottom-style:none
-}
-.element-details {
+.artist_table-details {
   display: flex;
   flex-direction: column;
 }
 
-.artist-names {
+.artist__artist-names {
   font-size: 11px;
   display: flex;
-
 }
 
-input#mat-input-3 {
-  color: white
-}
-.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-5.mdc-text-field--filled.mdc-text-field--no-label{
-  background-color: #242424 !important;
+.mat-mdc-cell {
+  border-bottom-style: none;
 }
 
-.mat-mdc-raised-button.mat-primary{
+.artist__added-album,
+.artist__table-subtitle,
+.artist__table-title {
+  color: white;
+}
+
+.artist__button {
   --mdc-protected-button-container-color: #70b53f;
+}
+
+@media (max-width: 767px) {
+  .artist {
+    padding: 0;
+  }
+  .artis__container {
+    width: auto;
+  }
+  .artist__title-principal {
+    font-size: 49px;
+  }
+  .artist__information {
+    display: flow;
+    margin-top: 0;
+  }
+  .artist_table-details {
+    margin-left: 12px;
+    text-align: left;
+  }
+  .artist__track-information {
+    display: initial;
+  }
+
+  .artist__table-image {
+    margin-left: -6px;
+  }
+  .mat-mdc-cell {
+    text-align: center;
+  }
+
+  .artist__album {
+    width: auto;
+    height: auto;
+  }
+
+  .artist__form {
+    display: grid;
+    gap: 0px;
+  }
+
+  .artist__added-album {
+    text-align: left;
+  }
 }

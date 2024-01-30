@@ -1,7 +1,8 @@
+
 <div class="search">
   <div class="search__fullcontainer">
     <div class="search__input__container">
-      <mat-icon fontIcon="search"></mat-icon>
+      <mat-icon class="search__icon" fontIcon="search"></mat-icon>
       <input
         [(ngModel)]="searchTracking"
         class="search__input"
@@ -13,12 +14,16 @@
         placeholder="Busca tu artista favorito"
       />
     </div>
-    <div class="search__container">
+    <div *ngIf="loading">
+      <app-loading ></app-loading>
+    </div>
+
+    <div class="search__table">
       <div [hidden]="dataSource.data.length === 0" class="search__table">
         <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
+          <table mat-table [dataSource]="dataSource"  class="search__table__content">
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>Artist</th>
+              <th mat-header-cell *matHeaderCellDef class="search__table__title">Artist</th>
               <td
                 (click)="sendId(element)"
                 class="search__table__information"
@@ -26,6 +31,7 @@
                 *matCellDef="let element"
               >
                 <img
+                class="search__table__image"
                   src="{{ element.images[0].url }}"
                   alt="{{ element.name }}"
                 />
@@ -35,14 +41,14 @@
             </ng-container>
             <ng-container matColumnDef="followers">
               <th
-                class="search__table__popularity"
+                class="search__table__title"
                 mat-header-cell
                 *matHeaderCellDef
               >
                 Followers
               </th>
               <td
-                class="search__table__popularity"
+                class="search__table__data"
                 mat-cell
                 *matCellDef="let element"
               >
@@ -51,20 +57,20 @@
             </ng-container>
             <ng-container matColumnDef="popularity">
               <th
-                class="search__table__popularity"
+                class="search__table__title"
                 mat-header-cell
                 *matHeaderCellDef
               >
                 popularity
               </th>
               <td
-                class="search__table__popularity"
+                class="search__table__data"
                 mat-cell
                 *matCellDef="let element"
               >
               <app-star-rating
               [value]="element.popularity"
-              style="margin-right: 20px"
+              class="search__table__rating"
             ></app-star-rating>
               </td>
             </ng-container>
@@ -72,13 +78,15 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
-          <mat-paginator
-            [pageSizeOptions]="[10, 15]"
-            showFirstLastButtons
-            aria-label="Select page of periodic elements"
-          >
-          </mat-paginator>
+
         </div>
+        <mat-paginator
+        class="search__paginator"
+          [pageSizeOptions]="[10, 15]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
       </div>
     </div>
     <div *ngIf="searchTracking === '' && dataSource.data.length === 0">

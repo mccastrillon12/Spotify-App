@@ -24,10 +24,12 @@ export class SearcherComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'followers', 'popularity'];
   dataSource = new MatTableDataSource<ArtistInformation>();
   searchTracking: string = '';
+  loading:boolean = false;
 
   constructor(private spotify: ApiService, private router: Router, private sharedArtistService:SharedArtistService, private localStorageService :LocalStorageService ) {
     this.localStorageService.deleteDataFromSessionStorage('ArtistInformation')
   }
+
 
   search(term: string) {
     if (term === '') {
@@ -35,8 +37,12 @@ export class SearcherComponent implements AfterViewInit {
       return;
     }
     this.spotify.getArtist(term).subscribe((res: ArtistResponse) => {
+      this.loading = true
+      console.log(this.loading)
       this.artistList = res.artists.items.map(this.mapArtistInformation);
       this.dataSource.data = this.artistList;
+      this.loading =false
+      console.log(this.loading)
     });
   }
 
