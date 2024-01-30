@@ -9,6 +9,7 @@ import {
 } from 'src/app/models/artist-information';
 
 import { ApiService } from 'src/app/shared/services/api.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SharedArtistService } from 'src/app/shared/services/shared-artist.service';
 
 
@@ -24,7 +25,9 @@ export class SearcherComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<ArtistInformation>();
   searchTracking: string = '';
 
-  constructor(private spotify: ApiService, private router: Router, private sharedArtistService:SharedArtistService, ) {}
+  constructor(private spotify: ApiService, private router: Router, private sharedArtistService:SharedArtistService, private localStorageService :LocalStorageService ) {
+    this.localStorageService.deleteDataFromSessionStorage('ArtistInformation')
+  }
 
   search(term: string) {
     if (term === '') {

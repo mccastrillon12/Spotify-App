@@ -20,7 +20,6 @@ export class NewReleasesComponent {
   getNewReleases() {
     this.spotify.getNewReleases().subscribe((res: ReleaseResponse) => {
       this.newReleases = res.albums.items.map(this.mapAlbumInformation);
-      console.log(res)
     });
   }
 

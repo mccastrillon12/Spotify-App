@@ -17,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModelArtistDetailsComponent } from '../model-artist-details/model-artist-details.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 export interface PeriodicElement {
   name: string;
@@ -24,8 +25,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
-
 
 @Component({
   selector: 'app-artist-details',
@@ -53,7 +52,8 @@ export class ArtistDetailsComponent {
     private aRoute: ActivatedRoute,
     private spotify: ApiService,
     private sharedArtistService: SharedArtistService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private localStorageService :LocalStorageService
   ) {
     this.id = '';
 
@@ -63,12 +63,21 @@ export class ArtistDetailsComponent {
         this.id = params['id'];
       });
 
+      const validateLocalStorageInformation = this.localStorageService.getDataFromSessionStorage('ArtistInformation')
+
+      if(!validateLocalStorageInformation){
+        this.localStorageService.saveLocalStorage('ArtistInformation',JSON.stringify(this.sharedArtistService.artistInformation));
+        this.artistDetails = this.sharedArtistService.artistInformation;
+      }
+
+      if(validateLocalStorageInformation){
+        this.artistDetails = validateLocalStorageInformation;
+      }
+
+
+
     this.getAlbumstDetails();
-
-    this.artistDetails = this.sharedArtistService.artistInformation;
-
     this.getTracksDetails();
-    console.log( this.dataSource.data)
   }
 
   getAlbumstDetails() {
@@ -96,7 +105,6 @@ export class ArtistDetailsComponent {
     this.spotify.getArtistTracks(this.id).subscribe((res: ArtistTracks) => {
       this.tracks = res.tracks.map(this.mapTrackInformation);
       this.dataSourceTracks.data = this.tracks;
-      console.log(this.dataSourceTracks.data)
     });
   }
 
@@ -131,7 +139,6 @@ export class ArtistDetailsComponent {
   sendAlbum(album: ReleasesInformation){
 
     this.dataSource.data = [...this.dataSource.data, {...album}];
-    console.log(album)
   }
 
 
