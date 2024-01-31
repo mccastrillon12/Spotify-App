@@ -60,6 +60,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
   gap: 20px;
+  cursor: pointer;
 }
 
 .artist__information {
@@ -91,6 +92,9 @@
   margin-top: 5px;
 }
 
+.artist__album:hover{
+  background: #24242482;
+}
 .artist__card-header {
   height: 70px;
   padding: 8px 16px 0;
@@ -112,14 +116,21 @@
   align-items: center;
   gap: 10px;
   color: white;
+
+}
+.artist__tracks-container tr.mat-mdc-row.mdc-data-table__row.cdk-row.ng-star-inserted{
+  cursor: pointer;
 }
 
+.artist__tracks-container tr.mat-mdc-row.mdc-data-table__row.cdk-row.ng-star-inserted:hover {
+  background: black;
+}
 .artist__table-image {
   width: 35px;
 }
 .artist__added-image {
   width: 35px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .artist__added-information {
@@ -166,11 +177,16 @@
 }
 
 .artist__button {
-  --mdc-protected-button-container-color: #70b53f;
+  --mdc-protected-button-container-color: #347505;
   margin-bottom: 15px
 }
 
-
+.artist__button:hover {
+  --mdc-protected-button-container-color: #57d200;
+}
+.artist__add-icon:hover{
+  background: #57d200;
+}
 
 @media (max-width: 767px) {
   .artist {
