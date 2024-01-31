@@ -41,14 +41,12 @@ export class SearcherComponent implements AfterViewInit {
     }
     this.isLoading = true;
     this.spotify.getArtist(term).subscribe((res: ArtistResponse) => {
-      console.log(this.isLoading);
       this.artistList = res.artists.items.map(this.mapArtistInformation);
       this.dataSource.data = this.artistList;
       this.isLoading = false;
       this.artistList.length > 0
         ? (this.isDataFound = true)
         : (this.isDataFound = false);
-      console.log(this.isLoading);
     });
   }
 
@@ -56,6 +54,7 @@ export class SearcherComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    console.log(this.dataSource.paginator)
   }
 
   private mapArtistInformation(artist: ArtistInformation) {

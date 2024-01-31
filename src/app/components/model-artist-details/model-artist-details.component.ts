@@ -15,8 +15,6 @@ export class ModelArtistDetailsComponent implements OnInit  {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ReleasesInformation | TrackInformation
   ) {
-
-
   }
   ngOnInit() {
     if (this.data.type === 'album' ) {
@@ -24,7 +22,6 @@ export class ModelArtistDetailsComponent implements OnInit  {
 
     } else if (this.data.type === 'track') {
       this.dataModelTrack = this.data as TrackInformation;
-      console.log('TrackInformation' ,this.dataModelTrack)
     }
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 const URL = 'https://api.spotify.com/v1';
 
@@ -12,7 +13,7 @@ export class ApiService {
   getQuery(query: string) {
     const headers = new HttpHeaders({
       Authorization:
-        'Bearer BQAvBp4vOY09u6uaSPCisugwIxLnQqs3VOGksdRl02UASKNP661sQnXeW0G_NVh8f5FoSCLvm6nxQVexNhtRAkMsvrxsAsTONMs3NcNaG1hQqRUf3Vs',
+        `Bearer ${environment.apiToken}`,
     });
     return this.http.get(`${URL}/${query}`, { headers });
   }

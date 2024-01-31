@@ -6,7 +6,7 @@ import { Component, Input, OnChanges } from '@angular/core';
   styleUrls: ['./star-rating.component.css']
 })
 export class StarRatingComponent implements OnChanges {
-  @Input() value: number; // Valor del 1 al 100
+  @Input() value: number;
 
   filledStars: number;
   percentage: number;

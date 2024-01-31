@@ -18,6 +18,7 @@ import { ModelArtistDetailsComponent } from '../model-artist-details/model-artis
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { Regex } from 'src/app/shared/enums/enums';
 
 export interface PeriodicElement {
   name: string;
@@ -36,7 +37,6 @@ export class ArtistDetailsComponent {
   artistDetails: ArtistInformation;
   albums: ReleasesInformation[];
   tracks: TrackInformation[];
-
   displayedColumns: string[] = ['name','year'];
   displayedColumnsTracks: string[] = ['name','album', 'trackInAlbum'];
   formAlbum = new FormGroup({
@@ -46,6 +46,8 @@ export class ArtistDetailsComponent {
   });
   dataSource = new MatTableDataSource<ReleasesInformation>();
   dataSourceTracks = new MatTableDataSource<ReleasesInformation>();
+  REGEX_URL = Regex.REGEX_URL;
+  REGEX_YEAR = Regex.REGEX_YEAR;
 
 
   constructor(
@@ -73,9 +75,6 @@ export class ArtistDetailsComponent {
       if(validateLocalStorageInformation){
         this.artistDetails = validateLocalStorageInformation;
       }
-
-
-
     this.getAlbumstDetails();
     this.getTracksDetails();
   }
@@ -123,7 +122,6 @@ export class ArtistDetailsComponent {
   openDialog(dataModel: ReleasesInformation | TrackInformation) {
     this.dialog.open(ModelArtistDetailsComponent, {
       data: dataModel,
-
     });
   }
 
@@ -138,7 +136,6 @@ export class ArtistDetailsComponent {
 
   }
   sendAlbum(album: ReleasesInformation){
-
     this.dataSource.data = [...this.dataSource.data, {...album}];
   }
 

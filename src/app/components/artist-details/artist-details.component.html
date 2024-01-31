@@ -35,8 +35,6 @@
         />
         <mat-icon
           class="artist__add-icon"
-          aria-hidden="false"
-          aria-label="Example home icon"
           fontIcon="add"
           (click)="sendAlbum(album)"
         ></mat-icon>
@@ -133,7 +131,7 @@
       </ng-container>
       <ng-container matColumnDef="year">
         <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
-          Year
+          Date
         </th>
         <td class="artist__added-album" mat-cell *matCellDef="let element">
           {{ element.release_date }}
@@ -161,13 +159,21 @@
             type="number"
             placeholder="Album Year"
             required
+            pattern={{REGEX_YEAR}}
           />
+          <mat-error *ngIf="formAlbum.get('year').hasError('pattern')">Year must be 4 digits.</mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
-          <input matInput formControlName="url" placeholder="Url Image" required/>
-
+          <input
+            matInput
+            formControlName="url"
+            placeholder="Url Image"
+            required
+            pattern={{REGEX_URL}}
+          />
+          <mat-error *ngIf="formAlbum.get('url').hasError('pattern')">Invalid URL.</mat-error>
         </mat-form-field>
       </p>
       <button mat-raised-button class="artist__button" color="primary" [disabled]="!formAlbum.valid">
@@ -175,4 +181,5 @@
       </button>
     </div>
   </form>
+
 </div>

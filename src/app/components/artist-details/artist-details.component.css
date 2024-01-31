@@ -5,9 +5,8 @@
 .artis__container {
   width: 98vw;
   height: 378px;
-  overflow: hidden;
+  overflow: var(--overflow);
   position: relative;
-  background: #0000009c;
 }
 
 .artist__background {
@@ -16,14 +15,14 @@
   filter: blur(4px);
   display: block;
   position: absolute;
-  z-index: -1;
 }
+
 .artist__text {
   position: relative;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:var(--justify-content);
   align-items: center;
   height: 100%;
 }
@@ -95,7 +94,7 @@
 .artist__card-header {
   height: 70px;
   padding: 8px 16px 0;
-  justify-content: center;
+  justify-content:var(--justify-content);
   text-align: center;
 }
 

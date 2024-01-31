@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {
-  ReleaseAlbumInformation,
   ReleaseResponse,
   ReleasesInformation,
 } from 'src/app/models/releases-information';
