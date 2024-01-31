@@ -185,6 +185,9 @@
 .artist__add-icon:hover{
   background: #57d200;
 }
+.input__error{
+  margin-bottom: 56px;
+}
 
 @media (max-width: 767px) {
   .artist {

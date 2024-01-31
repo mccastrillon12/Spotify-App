@@ -134,7 +134,7 @@
           Date
         </th>
         <td class="artist__added-album" mat-cell *matCellDef="let element">
-          {{ element.release_date }}
+          {{ element.release_date | date:'yyyy'}}
         </td>
       </ng-container>
 
@@ -178,7 +178,7 @@
             pattern={{REGEX_URL}}
             id="albumUrl"
           />
-          <mat-error *ngIf="formAlbum.get('url').hasError('pattern')">Invalid URL.</mat-error>
+          <mat-error class="input__error" *ngIf="formAlbum.get('url').hasError('pattern')">Invalid URL. Example: https://www.example.com/image </mat-error>
         </mat-form-field>
       </p>
       <button mat-raised-button class="artist__button" color="primary" [disabled]="!formAlbum.valid">
