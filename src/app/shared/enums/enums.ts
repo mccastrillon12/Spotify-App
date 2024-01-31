@@ -1,5 +1,5 @@
 export enum Regex{
-  REGEX_URL = "https?://.+",
+  REGEX_URL = "https?://[^\\s]+",
   REGEX_YEAR = "[0-9]{4}"
 }
 

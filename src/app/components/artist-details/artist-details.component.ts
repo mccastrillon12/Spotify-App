@@ -126,14 +126,22 @@ export class ArtistDetailsComponent {
       images: [{url:this.formAlbum.value.url}]
     };
     this.dataSource.data = [...this.dataSource.data, {...addAlbum}];
-
+    const albumName = document.getElementById('albumName') as HTMLInputElement;
+    const albumYear = document.getElementById('albumYear') as HTMLInputElement;
+    const albumUrl = document.getElementById('albumUrl') as HTMLInputElement;
+    this.clearFields(albumName, albumYear, albumUrl);
 
   }
   sendAlbum(album: ReleasesInformation){
     this.dataSource.data = [...this.dataSource.data, {...album}];
   }
 
-
+  clearFields(albumName: HTMLInputElement, albumYear: HTMLInputElement, albumUrl: HTMLInputElement) {
+    this.formAlbum.reset();
+    albumName.value = '';
+    albumYear.value = '';
+    albumUrl.value = '';
+  }
 
 }
 
