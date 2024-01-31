@@ -123,6 +123,7 @@ export class ArtistDetailsComponent {
   openDialog(dataModel: ReleasesInformation | TrackInformation) {
     this.dialog.open(ModelArtistDetailsComponent, {
       data: dataModel,
+
     });
   }
 

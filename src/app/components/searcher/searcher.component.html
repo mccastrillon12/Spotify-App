@@ -14,11 +14,11 @@
         placeholder="Busca tu artista favorito"
       />
     </div>
-    <div *ngIf="loading">
+    <div *ngIf="searchTracking !== '' && isLoading === true ">
       <app-loading ></app-loading>
     </div>
 
-    <div class="search__table">
+    <div *ngIf="!isLoading" class="search__table">
       <div [hidden]="dataSource.data.length === 0" class="search__table">
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource"  class="search__table__content">
@@ -93,8 +93,9 @@
       <app-new-releases></app-new-releases>
     </div>
 
-    <div *ngIf="searchTracking !== '' && dataSource.data.length === 0">
-      <app-error></app-error>
+
+    <div *ngIf="searchTracking !== '' && !isDataFound && isLoading === false">
+      < <app-error></app-error>
     </div>
   </div>
 </div>

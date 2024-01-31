@@ -1,4 +1,4 @@
-<div *ngIf="dataModelAlbum" class="model">
+<!-- <div *ngIf="dataModelAlbum" class="model">
   <div class="model__image">
     <img src="{{dataModelAlbum.images[0].url}}" alt="">
   </div>
@@ -12,13 +12,25 @@
     <button  mat-dialog-close>Close</button>
   </div>
 </div>
+ -->
+
 
 <div *ngIf="dataModelTrack" class="model">
-  <h1 class="model__title" >{{ dataModelTrack.name }}</h1>
-  <h1 class="model__subtitle">{{ dataModelTrack.album.name }}</h1>
-  <h1 class="model__subtitle">{{ dataModelTrack.track_number }}</h1>
-  <div   class="model__actions"  mat-dialog-actions>
-    <button mat-flat-button color="warn" mat-dialog-close>Close</button>
+  <img src="{{ dataModelTrack.album.images[0].url }}" alt="" />
+  <div class="text">
+    <div class="data__information">Album:{{ dataModelTrack.album.name }}</div>
+    <div class="data__type">Track</div>
+    <div class="data__name">{{ dataModelTrack.name }}</div>
+    <div class="data__number">Track Number:{{dataModelTrack.track_number}}</div>
   </div>
 </div>
 
+<div *ngIf="dataModelAlbum" class="model">
+  <img src="{{ dataModelAlbum.images[0].url }}" alt="" />
+  <div class="text">
+    <div class="data__information">Release Date: {{ dataModelAlbum.release_date }}</div>
+    <div class="data__type">Album</div>
+    <div class="data__name">{{ dataModelAlbum.name }}</div>
+    <div class="data__number">Total Tracks: {{ dataModelAlbum.total_tracks }}</div>
+  </div>
+</div>

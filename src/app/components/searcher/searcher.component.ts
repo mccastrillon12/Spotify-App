@@ -12,8 +12,6 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { SharedArtistService } from 'src/app/shared/services/shared-artist.service';
 
-
-
 @Component({
   selector: 'app-searcher',
   templateUrl: './searcher.component.html',
@@ -24,25 +22,33 @@ export class SearcherComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'followers', 'popularity'];
   dataSource = new MatTableDataSource<ArtistInformation>();
   searchTracking: string = '';
-  loading:boolean = false;
+  isDataFound: boolean = true;
+  isLoading: boolean = false;
 
-  constructor(private spotify: ApiService, private router: Router, private sharedArtistService:SharedArtistService, private localStorageService :LocalStorageService ) {
-    this.localStorageService.deleteDataFromSessionStorage('ArtistInformation')
+  constructor(
+    private spotify: ApiService,
+    private router: Router,
+    private sharedArtistService: SharedArtistService,
+    private localStorageService: LocalStorageService
+  ) {
+    this.localStorageService.deleteDataFromSessionStorage('ArtistInformation');
   }
-
 
   search(term: string) {
     if (term === '') {
       this.dataSource.data = [];
       return;
     }
+    this.isLoading = true;
     this.spotify.getArtist(term).subscribe((res: ArtistResponse) => {
-      this.loading = true
-      console.log(this.loading)
+      console.log(this.isLoading);
       this.artistList = res.artists.items.map(this.mapArtistInformation);
       this.dataSource.data = this.artistList;
-      this.loading =false
-      console.log(this.loading)
+      this.isLoading = false;
+      this.artistList.length > 0
+        ? (this.isDataFound = true)
+        : (this.isDataFound = false);
+      console.log(this.isLoading);
     });
   }
 
@@ -71,14 +77,10 @@ export class SearcherComponent implements AfterViewInit {
     return artistInformation;
   }
 
-  sendId(artistInformation:ArtistInformation) {
-
+  sendId(artistInformation: ArtistInformation) {
     this.sharedArtistService.sendArtistInformation(artistInformation);
-    this.router.navigate(['artist'],{queryParams:{id : artistInformation.id}})
-
+    this.router.navigate(['artist'], {
+      queryParams: { id: artistInformation.id },
+    });
   }
-
-
-
-
 }

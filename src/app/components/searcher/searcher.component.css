@@ -68,6 +68,17 @@
 .search__table__rating {
   margin-right: 20px;
 }
+app-loading{
+  height: 80vh;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+.mat-mdc-cell {
+  border-bottom-style: none;
+}
 
 @media (max-width: 768px) {
 .mat-elevation-z8{
@@ -75,6 +86,9 @@
 }
 .search{
   padding: 0;
+}
+.mat-mdc-cell {
+  margin-bottom: 20px;
 }
 
 
