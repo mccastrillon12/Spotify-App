@@ -20,12 +20,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { Regex } from 'src/app/shared/enums/enums';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
 @Component({
   selector: 'app-artist-details',

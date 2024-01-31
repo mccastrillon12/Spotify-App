@@ -54,7 +54,6 @@ export class SearcherComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource.paginator)
   }
 
   private mapArtistInformation(artist: ArtistInformation) {

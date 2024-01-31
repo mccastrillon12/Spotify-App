@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ReleasesInformation } from 'src/app/models/releases-information';
 import { TrackInformation } from '../../models/artist-details.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TypeItem } from 'src/app/shared/enums/enums';
 
 @Component({
   selector: 'app-model-artist-details',
@@ -17,10 +18,10 @@ export class ModelArtistDetailsComponent implements OnInit  {
   ) {
   }
   ngOnInit() {
-    if (this.data.type === 'album' ) {
+    if (this.data.type === TypeItem.ALBUM ) {
       this.dataModelAlbum = this.data as ReleasesInformation;
 
-    } else if (this.data.type === 'track') {
+    } else if (this.data.type === TypeItem.TRACK) {
       this.dataModelTrack = this.data as TrackInformation;
     }
   }
