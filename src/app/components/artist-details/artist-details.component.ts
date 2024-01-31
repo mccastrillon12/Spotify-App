@@ -19,7 +19,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { Regex } from 'src/app/shared/enums/enums';
-
+import { ModalInformationComponent } from '../modal-information/modal-information.component';
 
 @Component({
   selector: 'app-artist-details',
@@ -31,8 +31,8 @@ export class ArtistDetailsComponent {
   artistDetails: ArtistInformation;
   albums: ReleasesInformation[];
   tracks: TrackInformation[];
-  displayedColumns: string[] = ['name','year'];
-  displayedColumnsTracks: string[] = ['name','album', 'trackInAlbum'];
+  displayedColumns: string[] = ['name', 'year'];
+  displayedColumnsTracks: string[] = ['name', 'album', 'trackInAlbum'];
   formAlbum = new FormGroup({
     name: new FormControl(''),
     year: new FormControl(''),
@@ -43,13 +43,12 @@ export class ArtistDetailsComponent {
   REGEX_URL = Regex.REGEX_URL;
   REGEX_YEAR = Regex.REGEX_YEAR;
 
-
   constructor(
     private aRoute: ActivatedRoute,
     private spotify: ApiService,
     private sharedArtistService: SharedArtistService,
     private dialog: MatDialog,
-    private localStorageService :LocalStorageService
+    private localStorageService: LocalStorageService
   ) {
     this.id = '';
 
@@ -59,16 +58,20 @@ export class ArtistDetailsComponent {
         this.id = params['id'];
       });
 
-      const validateLocalStorageInformation = this.localStorageService.getDataFromSessionStorage('ArtistInformation')
+    const validateLocalStorageInformation =
+      this.localStorageService.getDataFromSessionStorage('ArtistInformation');
 
-      if(!validateLocalStorageInformation){
-        this.localStorageService.saveLocalStorage('ArtistInformation',JSON.stringify(this.sharedArtistService.artistInformation));
-        this.artistDetails = this.sharedArtistService.artistInformation;
-      }
+    if (!validateLocalStorageInformation) {
+      this.localStorageService.saveLocalStorage(
+        'ArtistInformation',
+        JSON.stringify(this.sharedArtistService.artistInformation)
+      );
+      this.artistDetails = this.sharedArtistService.artistInformation;
+    }
 
-      if(validateLocalStorageInformation){
-        this.artistDetails = validateLocalStorageInformation;
-      }
+    if (validateLocalStorageInformation) {
+      this.artistDetails = validateLocalStorageInformation;
+    }
     this.getAlbumstDetails();
     this.getTracksDetails();
   }
@@ -107,8 +110,7 @@ export class ArtistDetailsComponent {
       type: track.type,
       track_number: track.track_number,
       album: track.album,
-      artists: track.album.artists
-
+      artists: track.album.artists,
     };
     return trackInformation;
   }
@@ -119,29 +121,37 @@ export class ArtistDetailsComponent {
     });
   }
 
+  openInformationDialog(dataModel: ReleasesInformation) {
+    this.dialog.open(ModalInformationComponent, {
+      data: dataModel,
+    });
+  }
+
   send() {
     const addAlbum: ReleasesInformation = {
       name: this.formAlbum.value.name,
-      release_date:parseInt(this.formAlbum.value.year),
-      images: [{url:this.formAlbum.value.url}]
+      release_date: parseInt(this.formAlbum.value.year),
+      images: [{ url: this.formAlbum.value.url }],
     };
-    this.dataSource.data = [...this.dataSource.data, {...addAlbum}];
+    this.dataSource.data = [...this.dataSource.data, { ...addAlbum }];
     const albumName = document.getElementById('albumName') as HTMLInputElement;
     const albumYear = document.getElementById('albumYear') as HTMLInputElement;
     const albumUrl = document.getElementById('albumUrl') as HTMLInputElement;
     this.clearFields(albumName, albumYear, albumUrl);
-
   }
-  sendAlbum(album: ReleasesInformation){
-    this.dataSource.data = [...this.dataSource.data, {...album}];
+  sendAlbum(album: ReleasesInformation) {
+    this.dataSource.data = [...this.dataSource.data, { ...album }];
+    this.openInformationDialog(album);
   }
 
-  clearFields(albumName: HTMLInputElement, albumYear: HTMLInputElement, albumUrl: HTMLInputElement) {
+  clearFields(
+    albumName: HTMLInputElement,
+    albumYear: HTMLInputElement,
+    albumUrl: HTMLInputElement
+  ) {
     this.formAlbum.reset();
     albumName.value = '';
     albumYear.value = '';
     albumUrl.value = '';
   }
-
 }
-

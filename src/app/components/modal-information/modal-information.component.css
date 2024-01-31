@@ -1,0 +1,38 @@
+.model__add {
+  width: 250px;
+  height: auto;
+  padding: 16px;
+  background:#242424;
+  color: white;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.model__album-name{
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+
+.model__information{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: start;
+}
+
+.model__icon{
+  color: green;
+  margin-left: 90%;
+}
+
+@media (max-width: 767px) {
+  .model__add {
+    width: 200px;
+  }
+}

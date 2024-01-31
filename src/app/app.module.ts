@@ -24,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ModalInformationComponent } from './components/modal-information/modal-information.component';
 
 
 
@@ -37,6 +38,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ModelArtistDetailsComponent,
     StarRatingComponent,
     LoadingComponent,
+    ModalInformationComponent,
 
   ],
   imports: [

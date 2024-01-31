@@ -112,13 +112,13 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumnsTracks"></tr>
     </table>
   </div>
-  <h1 class="artist__title">Added</h1>
+  <h1 class="artist__title">Your albums added</h1>
 
   <div class="mat-elevation-z8">
     <table class="artist__table" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="name">
         <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
-          albums
+          Albums
         </th>
         <td class="artist__added-album" mat-cell *matCellDef="let element">
           <div class="artist__added-information">
@@ -131,7 +131,7 @@
       </ng-container>
       <ng-container matColumnDef="year">
         <th class="artist__table-title" mat-header-cell *matHeaderCellDef>
-          Date
+          Year
         </th>
         <td class="artist__added-album" mat-cell *matCellDef="let element">
           {{ element.release_date | date:'yyyy'}}
