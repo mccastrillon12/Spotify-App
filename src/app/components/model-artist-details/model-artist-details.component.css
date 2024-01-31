@@ -52,4 +52,7 @@ img {
   .model {
     width: 240px;
   }
+  .data__number {
+    margin-left: 91.5%;
+  }
 }
